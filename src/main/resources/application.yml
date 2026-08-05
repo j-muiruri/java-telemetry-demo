@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      service: java-app          # Matches dashboard and alert labels
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true   # Enables p95/p99 latency calculations
